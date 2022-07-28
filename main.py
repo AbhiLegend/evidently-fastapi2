@@ -137,6 +137,19 @@ data_drift_dashboard.calculate(reference, current.loc['2011-01-29 00:00:00':'201
 
 data_drift_dashboard.save("./static/data_drift_dashboard_after_week1.html")
 
+"""## Data Drift Week 2"""
+column_mapping = ColumnMapping()
+column_mapping.numerical_features = numerical_features
+data_drift_dashboard = Dashboard(tabs=[DataDriftTab()])
+data_drift_dashboard.calculate(reference, current.loc['2011-02-07 00:00:00':'2011-02-14 23:00:00'],
+                                   column_mapping=column_mapping)
+data_drift_dashboard.save("./static/data_drift_dashboard_after_week2.html")
+
+
+
+
+
+
 app = FastAPI()
 
 app.mount("/", StaticFiles(directory="static",html = True), name="static")
